@@ -1,31 +1,40 @@
-import React, { useState } from "react";
-import { Button, FlatList, ScrollView, StyleSheet, Text, TextInput, View, Modal, Image } from "react-native";
-import CustomBtn from "./components/CustomBtn";
-import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import React from "react";
+import { StyleSheet, View, Text, SafeAreaView } from "react-native";
+import Home from "./screens/Home";
+import "react-native-gesture-handler";
+
+import { images, COLORS, SIZES, icons } from "./constants";
+import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "./components";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
     return (
-        <View style={styles.container}>
-            <Text style={styles.one}>vivek</Text>
-            <Text style={styles.two}>vivek</Text>
-        </View>
+        <SafeAreaView style={styles.container}>
+            <View style={styles.container}>
+                <NavigationContainer>
+                    <Stack.Navigator>
+                        <Stack.Screen
+                            name="Home"
+                            component={Home}
+                            options={{
+                                headerShadowVisible: false,
+                                headerTitle: "",
+                                headerLeft: () => <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />,
+                                headerRight: () => <ScreenHeaderBtn iconUrl={icons.profile} dimension="100%" />,
+                            }}
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </View>
+        </SafeAreaView>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: 'yellow',
-        textAlign: 'center'
-    },
-    one: {
-        width: 200,
-        backgroundColor: 'red',
-        textAlign: 'center'
-    },
-    two: {
-        width: 200,
-        backgroundColor: 'red',
-        textAlign: 'center'
     },
 });
