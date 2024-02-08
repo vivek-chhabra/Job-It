@@ -1,15 +1,17 @@
-import { PressableOpacity } from "react-native-pressable-opacity";
 import { View, StyleSheet } from "react-native";
-import React from "react";
+import { useFonts } from "expo-font";
+import React, { useState } from "react";
 
 import { Nearbyjobs, Popularjobs, Welcome } from "../components";
 import { SIZES } from "../constants";
 
 export default function Home() {
+    const [query, setQuery] = useState("");
+
     return (
         <View style={styles.container}>
-            <Welcome />
-            <Popularjobs />
+            <Welcome setQuery={setQuery} query={query} />
+            <Popularjobs setQuery={setQuery} query={query} />
             <Nearbyjobs />
         </View>
     );

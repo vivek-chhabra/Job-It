@@ -47,15 +47,15 @@ const styles = StyleSheet.create({
     },
     searchBtn: {
         backgroundColor: COLORS.tertiary,
-        borderRadius: SIZES.xSmall,
+        borderRadius: SIZES.medium,
         justifyContent: "center",
         alignItems: "center",
-        padding: 5,
+        padding: 8,
     },
     searchBtnImage: {
         tintColor: COLORS.white,
-        width: 35,
-        height: 35,
+        width: 28,
+        height: 28,
         tintColor: "white",
     },
     tabsContainer: {

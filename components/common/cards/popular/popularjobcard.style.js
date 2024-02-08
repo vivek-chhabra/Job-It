@@ -5,17 +5,18 @@ import { COLORS, FONT, SHADOWS, SIZES } from "../../../../constants";
 const styles = StyleSheet.create({
   container: (selectedJob, item) => ({
     width: 250,
-    padding: SIZES.xLarge,
+    padding: SIZES.small,
     backgroundColor: selectedJob === item.job_id ? COLORS.primary : "#FFF",
-    borderRadius: SIZES.medium,
+    borderRadius: SIZES.large,
     justifyContent: "space-between",
-    ...SHADOWS.medium,
-    shadowColor: COLORS.white,
+    borderWidth: 1,
+    borderColor: COLORS.gray2,
+    marginTop: SIZES.small,
   }),
   logoContainer: (selectedJob, item) => ({
     width: 50,
     height: 50,
-    backgroundColor: selectedJob === item.job_id ? "#FFF" : COLORS.white,
+    backgroundColor: selectedJob === item.job_id ? "#FFF" : COLORS.gray3,
     borderRadius: SIZES.medium,
     justifyContent: "center",
     alignItems: "center",
@@ -23,15 +24,12 @@ const styles = StyleSheet.create({
   logoImage: {
     width: "70%",
     height: "70%",
+    borderRadius: SIZES.xSmall
   },
   companyName: {
     fontSize: SIZES.medium,
     fontFamily: FONT.regular,
     color: "#B3AEC6",
-    marginTop: SIZES.small / 1.5,
-  },
-  infoContainer: {
-    marginTop: SIZES.large,
   },
   jobName: (selectedJob, item) => ({
     fontSize: SIZES.large,
@@ -54,6 +52,11 @@ const styles = StyleSheet.create({
     fontFamily: FONT.regular,
     color: "#B3AEC6",
   },
+  topRowContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: SIZES.small
+  }
 });
 
 export default styles;

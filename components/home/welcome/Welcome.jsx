@@ -9,15 +9,12 @@ import { PressableOpacity } from "react-native-pressable-opacity";
 
 const jobTitles = ["Full-time", "Part-Time", "Contractor"];
 
-const Welcome = () => {
-    const [query, setQuery] = useState("");
+const Welcome = ({ setQuery, query }) => {
     const [activeJobType, setActiveJobType] = useState(jobTitles[0]);
 
     const router = useRoute();
 
-    const onsubmit = () => {
-        alert("query");
-    };
+    const onsubmit = () => {};
 
     return (
         <View>
