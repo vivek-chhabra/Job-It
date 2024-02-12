@@ -1,4 +1,4 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, ScrollView } from "react-native";
 import { useFonts } from "expo-font";
 import React, { useState } from "react";
 
@@ -9,11 +9,11 @@ export default function Home() {
     const [query, setQuery] = useState("");
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <Welcome setQuery={setQuery} query={query} />
             <Popularjobs setQuery={setQuery} query={query} />
             <Nearbyjobs />
-        </View>
+        </ScrollView>
     );
 }
 

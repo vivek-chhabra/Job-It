@@ -3,9 +3,9 @@ export function truncateText(string, end) {
   return string.slice(0, end) + '...';
 }
 
-String.prototype.truncateTextWithWords = function (end) {
-  return this.split(' ').slice(0, end).join(' ');
-};
+export function truncateTextWithWords(string, end) {
+  return string.split(' ').slice(0, end).join(' ');
+}
 
 export const checkImgUrl = url => {
   if (!url) return;

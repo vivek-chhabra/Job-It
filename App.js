@@ -7,6 +7,7 @@ import "react-native-gesture-handler";
 
 import { images, COLORS, SIZES, icons } from "./constants";
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from "./components";
+import JobDetails from './screens/JobDetails';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,6 +25,15 @@ export default function App() {
                                 headerTitle: "",
                                 headerLeft: () => <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />,
                                 headerRight: () => <ScreenHeaderBtn iconUrl={icons.profile} dimension="100%" />,
+                            }}
+                        />
+                        <Stack.Screen
+                            name="JobDetails"
+                            component={JobDetails}
+                            options={{
+                                headerShadowVisible: false,
+                                headerTitle: "Job Details",
+                                headerTitleAlign: 'center'
                             }}
                         />
                     </Stack.Navigator>

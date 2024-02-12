@@ -19,11 +19,9 @@ const Popularjobs = ({ setQuery, query }) => {
     setSelectedData(item)
   }
 
-  // console.log(data, 'dataf')
-
   const renderCardsContainer = () => {
     if (isLoading)
-      return <ActivityIndicator size="small" color={COLORS.tertiary} />
+      return <ActivityIndicator size="large" color={COLORS.tertiary} style={{height: 200}} />
     else if (error) return <Text>Something went wrong</Text>
     else {
       return (

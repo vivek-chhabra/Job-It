@@ -1,47 +1,47 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-import { COLORS, SHADOWS, SIZES } from "../../../../constants";
+import { COLORS, SHADOWS, SIZES } from '../../../../constants';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexDirection: "row",
-    padding: SIZES.medium,
-    borderRadius: SIZES.small,
-    backgroundColor: "#FFF",
-    ...SHADOWS.medium,
-    shadowColor: COLORS.white,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    padding: SIZES.small,
+    borderRadius: SIZES.large,
+    backgroundColor: COLORS.gray3,
+    marginTop: SIZES.small
   },
   logoContainer: {
-    width: 50,
-    height: 50,
-    backgroundColor: COLORS.white,
-    borderRadius: SIZES.medium,
-    justifyContent: "center",
-    alignItems: "center",
+    width: 45,
+    height: 45,
+    backgroundColor: COLORS.gray3,
+    borderRadius: SIZES.xSmall,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
-  logImage: {
-    width: "70%",
-    height: "70%",
+  logoImage: {
+    width: '70%',
+    height: '70%',
+    borderRadius: SIZES.xxSmall
   },
   textContainer: {
     flex: 1,
-    marginHorizontal: SIZES.medium,
+    marginHorizontal: SIZES.medium
   },
   jobName: {
     fontSize: SIZES.medium,
-    fontFamily: "DMBold",
-    color: COLORS.primary,
+    fontFamily: 'DMBold',
+    color: COLORS.primary
   },
   jobType: {
     fontSize: SIZES.small + 2,
-    fontFamily: "DMRegular",
+    fontFamily: 'DMRegular',
     color: COLORS.gray,
     marginTop: 3,
-    textTransform: "capitalize",
-  },
+    textTransform: 'capitalize'
+  }
 });
 
 export default styles;
