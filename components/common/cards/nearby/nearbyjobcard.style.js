@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   logoContainer: {
     width: 45,
     height: 45,
-    backgroundColor: COLORS.gray3,
+    backgroundColor: COLORS.white,
     borderRadius: SIZES.xSmall,
     justifyContent: 'center',
     alignItems: 'center'
@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   logoImage: {
     width: '70%',
     height: '70%',
-    borderRadius: SIZES.xxSmall
+    borderRadius: SIZES.xxSmall,
   },
   textContainer: {
     flex: 1,

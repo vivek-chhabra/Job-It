@@ -35,7 +35,7 @@ const NearbyJobCard = ({ job }) => {
       </PressableOpacity>
 
       <View style={styles.textContainer}>
-        <Text style={styles.jobName}>{truncateTextWithWords(job.job_title, 9) + '...'}</Text>
+        <Text style={styles.jobName}>{truncateTextWithWords(job.job_title, 9) }</Text>
         <Text style={styles.jobType}>{job?.job_employment_type}</Text>
       </View>
     </PressableOpacity>

@@ -2,7 +2,7 @@
     "semi": false,
     "singleQuote": true,
     "jsxSingleQuote": false,
-    "tabWidth": 2,
+    "tabWidth": 4,
     "trailingComma": "none",
     "bracketSpacing": true,
     "jsxBracketSameLine": false,

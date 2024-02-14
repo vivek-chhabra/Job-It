@@ -7,7 +7,7 @@ const styles = StyleSheet.create({
     marginTop: SIZES.large,
     backgroundColor: "#FFF",
     borderRadius: SIZES.medium,
-    padding: SIZES.medium,
+    padding: SIZES.small,
   },
   headText: {
     fontSize: SIZES.large,

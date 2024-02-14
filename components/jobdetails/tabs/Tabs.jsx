@@ -1,14 +1,38 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, ScrollView, Text } from 'react-native'
 
 import styles from './tabs.style'
+import { PressableOpacity } from 'react-native-pressable-opacity'
+import { COLORS, SIZES } from '../../../constants'
 
-const Tabs = () => {
-  return (
-    <View>
-      <Text>Tabs</Text>
-    </View>
-  )
+const Tabs = ({ tabs, activeTab, setActiveTab }) => {
+    function TabButton({ name, onHandleSearchType }) {
+        return (
+            <PressableOpacity
+                style={styles.btn(name, activeTab)}
+                onPress={onHandleSearchType}
+            >
+                <Text style={activeTab === name && { color: COLORS.white, fontWeight: 'bold' }}>
+                    {name}
+                </Text>
+            </PressableOpacity>
+        )
+    }
+
+    return (
+        <ScrollView
+            horizontal={true}
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ columnGap: SIZES.small / 2, justifyContent: 'space-between', width: '100%' }}
+        >
+            {tabs.map(tab => (
+                <TabButton
+                    name={tab}
+                    onHandleSearchType={() => setActiveTab(tab)}
+                />
+            ))}
+        </ScrollView>
+    )
 }
 
 export default Tabs
