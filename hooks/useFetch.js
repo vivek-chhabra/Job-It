@@ -7,7 +7,6 @@ export default useFetch = (endPoint, query) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  console.log(process.env.RAPID_API_KEY, 'api key');
   const options = {
     method: 'GET',
     url: `https://jsearch.p.rapidapi.com/${endPoint}`,

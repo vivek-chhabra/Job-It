@@ -85,7 +85,6 @@ export default function JobDetails() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        // height: 10,
         backgroundColor: COLORS.white
     }
 })

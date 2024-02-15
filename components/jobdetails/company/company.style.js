@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         color: COLORS.primary,
         fontFamily: FONT.bold,
         fontWeight: 'bold',
-        width: 150
+        width: 250
     },
     companyInfoBox: {
         flexDirection: 'row',
