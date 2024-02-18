@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import React, { useEffect, useState } from 'react';
+import { useFocusEffect, useRoute } from '@react-navigation/native';
+import React, { useState } from 'react';
 import { Text, SafeAreaView } from 'react-native';
 import {
     ActivityIndicator,
@@ -11,8 +12,8 @@ import {
 
 import { ScreenHeaderBtn, NearbyJobCard } from '../../components';
 import { COLORS, icons, SIZES } from '../../constants';
-import { useRoute } from '@react-navigation/native';
 import styles from '../../styles/search';
+import useFetch from '../../hooks/useFetch';
 
 const Stack = createNativeStackNavigator();
 
@@ -32,19 +33,21 @@ const JobSearch = ({}) => {
     const handlePagination = direction => {
         if (direction === 'left' && page > 1) {
             setPage(page - 1);
-            handleSearch();
+            fetchData({ query, num_pages: page });
         } else if (direction === 'right') {
             setPage(page + 1);
-            handleSearch();
+            fetchData({ query, num_pages: page });
         }
     };
 
-    useEffect(() => {
-        fetchData({
-            query,
-            num_pages: page
-        });
-    }, []);
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchData({
+                query,
+                num_pages: page
+            });
+        }, [])
+    );
 
     return (
         <SafeAreaView
@@ -84,7 +87,7 @@ const JobSearch = ({}) => {
                 ListHeaderComponent={() => (
                     <>
                         <View style={styles.container}>
-                            <Text style={styles.searchTitle}>{params.id}</Text>
+                            <Text style={styles.searchTitle}>{query}</Text>
                             <Text style={styles.noOfSearchedJobs}>
                                 Here are the current jobs available for you.
                             </Text>
@@ -94,11 +97,13 @@ const JobSearch = ({}) => {
                                 <ActivityIndicator
                                     size="large"
                                     color={COLORS.primary}
-                                    style={{marginTop: 50}}
+                                    style={{ marginTop: 50 }}
                                 />
                             ) : (
                                 searchError && (
-                                    <Text style={styles.error}>Oops something went wrong</Text>
+                                    <Text style={styles.error}>
+                                        Oops something went wrong
+                                    </Text>
                                 )
                             )}
                         </View>

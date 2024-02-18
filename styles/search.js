@@ -9,11 +9,13 @@ const styles = StyleSheet.create({
     searchTitle: {
         fontFamily: FONT.bold,
         fontSize: SIZES.xLarge,
-        color: COLORS.primary
+        color: COLORS.primary,
+        textAlign: 'center',
+        marginBottom: 10
     },
     searchResultContainer: {
         padding: SIZES.medium,
-        rowGap: SIZES.medium,
+        rowGap: SIZES.small,
         paddingBottom: SIZES.large
     },
     noOfSearchedJobs: {

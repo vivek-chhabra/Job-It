@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ScrollView, StyleSheet } from 'react-native';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
+import { ScrollView, StyleSheet } from 'react-native';
 import React from 'react';
 
 import {
@@ -76,16 +76,18 @@ export default function JobDetails() {
         }
     };
 
-    useFocusEffect(() => {
-        (async () => {
-            const favJobsList = (await getDataFromStorage('favJobs')) || [];
-            setFavJobsList(favJobsList);
-            console.log(favJobsList, 'favjoblist');
-        })();
-
+    const fetchJobDetails = async () => {
+        const favJobsList = (await getDataFromStorage('favJobs')) || [];
         const isFavJob = isFav(data, favJobsList);
+        setFavJobsList(favJobsList);
         setIsFavJob(isFavJob);
-    });
+    };
+
+    useFocusEffect(
+        React.useCallback(() => {
+            fetchJobDetails();
+        }, [])
+    );
 
     const displayTabContent = () => {
         switch (activeTab) {

@@ -12,7 +12,6 @@ import { COLORS, icons } from './constants';
 import Favorite from './screens/Favorite';
 import Home from './screens/Home';
 
-
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
@@ -20,7 +19,7 @@ export default function App() {
     function MyDrawer() {
         return (
             <Drawer.Navigator
-                screenOptions={{
+                screenOptions={({ navigation }) => ({
                     headerShadowVisible: false,
                     headerTitle: '',
                     headerTintColor: COLORS.light_purple,
@@ -33,22 +32,27 @@ export default function App() {
                     drawerActiveTintColor: COLORS.white,
                     drawerActiveBackgroundColor: COLORS.primary,
                     drawerInactiveTintColor: COLORS.primary,
-                    drawerLabelStyle: { fontSize: 16, fontWeight: 'bold', paddingHorizontal: 10 },
+                    drawerLabelStyle: {
+                        fontSize: 16,
+                        fontWeight: 'bold',
+                        paddingHorizontal: 10
+                    },
                     drawerInactiveBackgroundColor: COLORS.light_purple,
-                    drawerItemStyle: { borderRadius: 15, marginVertical: 5,  },
+                    drawerItemStyle: { borderRadius: 15, marginVertical: 5 },
                     drawerStyle: {
                         width: 250,
                         borderTopRightRadius: 20,
                         borderBottomRightRadius: 20
                     },
+                    headerTintColor: COLORS.primary,
                     headerLeft: () => (
                         <ScreenHeaderBtn
                             iconUrl={icons.menu}
                             dimension="60%"
                             handlePress={() => navigation.openDrawer()}
                         />
-                    ),
-                }}
+                    )
+                })}
             >
                 <Drawer.Screen
                     name="Home"
@@ -62,13 +66,24 @@ export default function App() {
                         )
                     })}
                 />
-                <Drawer.Screen name="Favorite" component={Favorite} />
+                <Drawer.Screen name="Favorite" component={Favorite} options={{
+                    headerTitle: 'Favorite Jobs'
+                }} />
                 <Drawer.Screen name="Profile (static)" component={() => {}} />
-                <Drawer.Screen name="Job Applications (static)" component={() => {}}/>
-                <Drawer.Screen name="Notifications (static)" component={() => {}}/>
-                <Drawer.Screen name="About (static)" component={() => {}}/>
-                <Drawer.Screen name="Settings (static)" component={() => {}}/>
-                <Drawer.Screen name="Help & Support (static)" component={() => {}}/>
+                <Drawer.Screen
+                    name="Job Applications (static)"
+                    component={() => {}}
+                />
+                <Drawer.Screen
+                    name="Notifications (static)"
+                    component={() => {}}
+                />
+                <Drawer.Screen name="About (static)" component={() => {}} />
+                <Drawer.Screen name="Settings (static)" component={() => {}} />
+                <Drawer.Screen
+                    name="Help & Support (static)"
+                    component={() => {}}
+                />
             </Drawer.Navigator>
         );
     }
