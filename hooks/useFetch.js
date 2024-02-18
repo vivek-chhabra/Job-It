@@ -1,43 +1,40 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default useFetch = (endPoint, query) => {
-  const RAPID_API_KEY = process.env.RAPID_API_KEY;
-  const [data, setData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState('');
+export default useFetch = endPoint => {
+    const RAPID_API_KEY = process.env.RAPID_API_KEY;
+    const [data, setData] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState('');
 
-  const options = {
-    method: 'GET',
-    url: `https://jsearch.p.rapidapi.com/${endPoint}`,
-    headers: {
-      'X-RapidAPI-Key': '5e9e990595msh3ce31b74a23c9e7p1c453ajsn20355463833e',
-      'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
-    },
-    params: { ...query }
-  };
+    const fetchData = async query => {
+        const options = {
+            method: 'GET',
+            url: `https://jsearch.p.rapidapi.com/${endPoint}`,
+            headers: {
+                'X-RapidAPI-Key':
+                    '654b27fe8bmsh406242ece38b66dp17decdjsn3e3a3b37369c',
+                'X-RapidAPI-Host': 'jsearch.p.rapidapi.com'
+            },
+            params: { ...query }
+        };
 
-  const fetchData = async () => {
-    setIsLoading(true);
-    setError(null);
-    setData([]);
+        setIsLoading(true);
+        setError(null);
+        setData([]);
 
-    try {
-      const res = await axios.request(options);
+        // try {
+        //     const res = await axios.request(options);
 
-      setData(res.data.data);
-      setIsLoading(false);
-    } catch (err) {
-      console.log(err.message, 'Something Went Wrong!!!');
-      setError(err.message);
-      alert(err.message);
-      setIsLoading(false);
-    }
-  };
+        //     setData(res.data.data);
+        //     setIsLoading(false);
+        //     return res.data.data;
+        // } catch (err) {
+        //     console.log(err.message);
+        //     setError(err.message);
+        //     setIsLoading(false);
+        // }
+    };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  return { isLoading, error, data, fetchData };
+    return { isLoading, error, data, fetchData };
 };

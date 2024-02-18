@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
         width: '80%',
         height: '80%',
         borderRadius: SIZES.small,
-        resizeMode: 'contain'
+        resizeMode: 'contain',
+        backgroundColor: COLORS.white
     },
     jobTitleBox: {
         marginTop: SIZES.small

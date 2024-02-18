@@ -1,13 +1,13 @@
-import React from 'react'
-import { View, Text, Image } from 'react-native'
+import React from 'react';
+import { View, Text, Image } from 'react-native';
 
-import styles from './popularjobcard.style'
-import { PressableOpacity } from 'react-native-pressable-opacity'
+import styles from './popularjobcard.style';
+import { PressableOpacity } from 'react-native-pressable-opacity';
 import {
     checkImgUrl,
     truncateText,
     truncateTextWithWords
-} from '../../../../utils/utils'
+} from '../../../../utils/utils';
 
 const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
     return (
@@ -29,17 +29,20 @@ const PopularJobCard = ({ item, selectedJob, handleCardPress }) => {
                         style={styles.logoImage}
                     />
                 </PressableOpacity>
-                <Text style={styles.companyName} numberOfLines={1}>
-                    {truncateText(item.employer_name, 18)}
+                <Text style={styles.companyName} numberOfLines={2}>
+                    {truncateText(item.employer_name, 45)}
                 </Text>
             </View>
 
             <Text style={styles.jobName(selectedJob, item)}>
-                {truncateTextWithWords(item.job_title, 5)}
+                {truncateTextWithWords(item.job_title, 7)}
             </Text>
-            <Text style={styles.location}>{item.job_country}</Text>
+            <Text style={styles.location}>
+                {item.job_country && item.job_country}{' '}
+                {item.job_city &&  item.job_city} | {item?.job_employment_type}
+            </Text>
         </PressableOpacity>
-    )
-}
+    );
+};
 
-export default PopularJobCard
+export default PopularJobCard;

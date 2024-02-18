@@ -1,32 +1,45 @@
-import { View, Text, TextInput, Image, ScrollView } from 'react-native'
-import { useRoute } from '@react-navigation/native'
-import React, { useState } from 'react'
+import { View, Text, TextInput, Image, ScrollView } from 'react-native';
+import { useRoute } from '@react-navigation/native';
+import React, { useState } from 'react';
 
-import styles from './welcome.style'
-import { COLORS, icons, SIZES } from '../../../constants'
-import { PressableOpacity } from 'react-native-pressable-opacity'
+import styles from './welcome.style';
+import { COLORS, icons, SIZES } from '../../../constants';
+import { PressableOpacity } from 'react-native-pressable-opacity';
 
-const jobTitles = ['All', 'Full-time', 'Part-Time', 'Contractor']
-
-const Welcome = ({ setQuery, query, onsubmit }) => {
-    const [activeJobType, setActiveJobType] = useState(jobTitles[0])
-
-    const router = useRoute()
+const Welcome = ({
+    setQuery,
+    query,
+    onsubmit,
+    activeJobType,
+    setActiveJobType,
+    jobTitles,
+    inputErr,
+    setInputErr
+}) => {
+    const router = useRoute();
 
     return (
         <View>
             <View style={styles.container}>
-                <Text style={styles.userName}>Hello Adrian</Text>
+                <Text style={styles.userName}>Hey Seeker</Text>
                 <Text style={styles.welcomeMessage}>Find your perfect job</Text>
             </View>
             <View style={styles.searchContainer}>
                 <View style={styles.searchWrapper}>
                     <TextInput
-                        style={styles.searchInput}
+                        style={
+                            inputErr ? styles.errorInput : styles.searchInput
+                        }
                         value={query}
                         cursorColor={COLORS.primary}
-                        placeholder="What are you looking for?"
-                        onTextInput={input => setQuery(input)}
+                        placeholder={
+                            inputErr ? inputErr : 'What are you looking for?'
+                        }
+                        placeholderTextColor={inputErr ? 'red' : COLORS.gray2}
+                        onChangeText={input => {
+                            setInputErr('');
+                            setQuery(input);
+                        }}
                     />
                 </View>
                 <PressableOpacity style={styles.searchBtn} onPress={onsubmit}>
@@ -56,7 +69,7 @@ const Welcome = ({ setQuery, query, onsubmit }) => {
                 ))}
             </ScrollView>
         </View>
-    )
-}
+    );
+};
 
-export default Welcome
+export default Welcome;

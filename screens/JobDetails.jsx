@@ -1,19 +1,91 @@
-import { View, Text, ScrollView, StyleSheet } from 'react-native'
-import { useRoute } from '@react-navigation/native'
-import React from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ScrollView, StyleSheet } from 'react-native';
+import { useFocusEffect, useRoute } from '@react-navigation/native';
+import React from 'react';
 
-import { Company, JobAbout, JobFooter, JobTabs, Specifics } from '../components'
-import { COLORS, SIZES } from '../constants'
-import { useState } from 'react'
+import {
+    Company,
+    JobAbout,
+    JobFooter,
+    JobTabs,
+    Specifics
+} from '../components';
+import { COLORS, SIZES } from '../constants';
+import { useState } from 'react';
+import { getDataFromStorage, isFav } from '../utils/utils';
 
-const tabs = ['About', 'Qualifications', 'Responsibilities']
+const tabs = ['About', 'Qualifications', 'Responsibilities'];
 
 export default function JobDetails() {
-    const [activeTab, setActiveTab] = useState(tabs[0])
+    const [activeTab, setActiveTab] = useState(tabs[0]);
+    const [favJobsList, setFavJobsList] = useState([]);
+    const [isFavJob, setIsFavJob] = useState(false);
 
-    const { params } = useRoute()
-    const { data } = params
-    console.log(data)
+    const { params } = useRoute();
+    const { data } = params;
+
+    const handleFavJobs = async () => {
+        const {
+            employer_name,
+            job_title,
+            job_google_link,
+            job_description,
+            job_city,
+            job_state,
+            job_employment_type,
+            job_highlights,
+            job_country,
+            employer_logo,
+            job_id,
+            job_is_remote
+        } = data;
+
+        const dataToSet = {
+            employer_name,
+            job_title,
+            job_google_link,
+            job_description,
+            job_city,
+            job_state,
+            job_employment_type,
+            job_highlights,
+            job_country,
+            employer_logo,
+            job_id,
+            job_is_remote
+        };
+
+        const favJobsList = (await getDataFromStorage('favJobs')) || [];
+        const isFavJob = isFav(data, favJobsList);
+
+        try {
+            if (!isFavJob) {
+                const res = JSON.stringify([dataToSet, ...favJobsList]);
+                await AsyncStorage.setItem('favJobs', res);
+                setIsFavJob(true);
+            } else {
+                let currentJobs = favJobsList.filter(
+                    item => item.job_id !== data.job_id
+                );
+                currentJobs = JSON.stringify(currentJobs);
+                await AsyncStorage.setItem('favJobs', currentJobs);
+                setIsFavJob(false);
+            }
+        } catch (err) {
+            console.log(err);
+        }
+    };
+
+    useFocusEffect(() => {
+        (async () => {
+            const favJobsList = (await getDataFromStorage('favJobs')) || [];
+            setFavJobsList(favJobsList);
+            console.log(favJobsList, 'favjoblist');
+        })();
+
+        const isFavJob = isFav(data, favJobsList);
+        setIsFavJob(isFavJob);
+    });
 
     const displayTabContent = () => {
         switch (activeTab) {
@@ -22,16 +94,16 @@ export default function JobDetails() {
                     <JobAbout
                         info={data.job_description ?? 'No Data Provided'}
                     />
-                )
-                break
+                );
+                break;
             case 'Qualifications':
                 return (
                     <Specifics
                         title="Qualifications"
                         points={data.job_highlights?.Qualifications ?? ['N/A']}
                     />
-                )
-                break
+                );
+                break;
             case 'Responsibilities':
                 return (
                     <Specifics
@@ -40,10 +112,10 @@ export default function JobDetails() {
                             data.job_highlights?.Responsibilities ?? ['N/A']
                         }
                     />
-                )
-                break
+                );
+                break;
         }
-    }
+    };
 
     return (
         <ScrollView
@@ -77,9 +149,11 @@ export default function JobDetails() {
                     data?.job_google_link ??
                     'https://careers.google.com/jobs/results'
                 }
+                handleFavJobs={handleFavJobs}
+                isFavJob={isFavJob}
             />
         </ScrollView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -87,4 +161,4 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: COLORS.white
     }
-})
+});

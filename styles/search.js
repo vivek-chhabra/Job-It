@@ -1,39 +1,53 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-import { COLORS, FONT, SIZES } from "../constants";
+import { COLORS, FONT, SIZES } from '../constants';
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
+        width: '100%'
     },
     searchTitle: {
         fontFamily: FONT.bold,
         fontSize: SIZES.xLarge,
-        color: COLORS.primary,
+        color: COLORS.primary
+    },
+    searchResultContainer: {
+        padding: SIZES.medium,
+        rowGap: SIZES.medium,
+        paddingBottom: SIZES.large
     },
     noOfSearchedJobs: {
         marginTop: 2,
         fontFamily: FONT.medium,
-        fontSize: SIZES.small,
+        fontSize: SIZES.small + 4,
+        padding: SIZES.small,
+        borderRadius: SIZES.small,
         color: COLORS.primary,
+        textAlign: 'center',
+        color: COLORS.white,
+        backgroundColor: COLORS.primary
     },
     loaderContainer: {
         marginTop: SIZES.medium
     },
     footerContainer: {
-        marginTop: SIZES.small,
+        flexDirection: 'row',
+        position: 'absolute',
+        width: '100%',
+        gap: 10,
+        bottom: 0,
         justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row',
-        gap: 10
+        paddingVertical: 15,
+        backgroundColor: COLORS.white
     },
     paginationButton: {
-        width: 30,
-        height: 30,
+        width: 35,
+        height: 35,
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: COLORS.tertiary
+        backgroundColor: COLORS.primary
     },
     paginationImage: {
         width: '60%',
@@ -51,7 +65,16 @@ const styles = StyleSheet.create({
     paginationText: {
         fontFamily: FONT.bold,
         fontSize: SIZES.medium,
-        color: COLORS.primary
+        color: COLORS.primary,
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    error: {
+        width: '100%',
+        textAlign: 'center',
+        fontSize: 16,
+        marginTop: 20,
+        color: 'red',
     }
 });
 

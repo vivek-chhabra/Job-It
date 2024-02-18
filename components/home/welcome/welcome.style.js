@@ -1,68 +1,77 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-import { COLORS, FONT, SIZES } from "../../../constants";
+import { COLORS, FONT, SIZES } from '../../../constants';
+
+const searchInput = {
+    fontFamily: FONT.regular,
+    width: '100%',
+    height: '100%',
+    paddingHorizontal: SIZES.medium,
+    backgroundColor: COLORS.gray3,
+    fontSize: SIZES.medium,
+    borderRadius: SIZES.xSmall,
+    color: COLORS.primary,
+};
 
 const styles = StyleSheet.create({
     container: {
-        width: "100%",
+        width: '100%'
     },
     userName: {
         fontFamily: FONT.regular,
         fontSize: SIZES.large,
         color: COLORS.gray,
-        fontWeight: "bold",
+        fontWeight: 'bold'
     },
     welcomeMessage: {
         fontFamily: FONT.bold,
         fontSize: SIZES.xLarge,
         color: COLORS.primary,
         marginTop: 2,
-        fontWeight: "bold",
+        fontWeight: 'bold'
     },
     searchContainer: {
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "row",
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'row',
         marginTop: SIZES.large,
-        height: 50,
+        height: 50
     },
     searchWrapper: {
         flex: 1,
         backgroundColor: COLORS.gray4,
         marginRight: SIZES.small,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
         borderRadius: SIZES.xSmall,
-        height: 45,
+        height: 45
     },
-    searchInput: {
-        fontFamily: FONT.regular,
-        width: "100%",
-        height: "100%",
-        paddingHorizontal: SIZES.medium,
-        backgroundColor: COLORS.gray3,
-        fontSize: SIZES.medium,
-        borderRadius: SIZES.xSmall,
-        color: COLORS.primary,
+    searchInput,
+    errorInput: {
+        ...searchInput, 
+        borderWidth: 1,
+        borderColor: 'red',
+        backgroundColor: COLORS.white,
+        fontSize: 14
     },
     searchBtn: {
         backgroundColor: COLORS.tertiary,
         borderRadius: SIZES.medium,
-        justifyContent: "center",
-        alignItems: "center",
-        padding: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        padding: 8
     },
     searchBtnImage: {
         tintColor: COLORS.white,
         width: 28,
         height: 28,
-        tintColor: "white",
+        tintColor: 'white'
     },
     tabsContainer: {
-        width: "100%",
+        width: '100%',
         marginTop: SIZES.medium,
-        flexDirection: "row",
-        justifyContent: "space-between",
+        flexDirection: 'row',
+        justifyContent: 'space-between'
     },
     tab: (activeJobType, item) => ({
         paddingVertical: SIZES.small / 2,
@@ -70,14 +79,14 @@ const styles = StyleSheet.create({
         borderRadius: SIZES.medium,
         borderWidth: 1,
         width: 100,
-        borderColor: activeJobType === item ? COLORS.secondary : COLORS.gray2,
+        borderColor: activeJobType === item ? COLORS.secondary : COLORS.gray2
     }),
     tabText: (activeJobType, item) => ({
         fontFamily: FONT.medium,
         color: activeJobType === item ? COLORS.secondary : COLORS.gray2,
-        fontWeight: activeJobType === item ? "bold" : "normal",
-        textAlign: "center",
-    }),
+        fontWeight: activeJobType === item ? 'bold' : 'normal',
+        textAlign: 'center'
+    })
 });
 
 export default styles;

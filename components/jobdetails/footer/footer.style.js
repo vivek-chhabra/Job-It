@@ -12,20 +12,21 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         backgroundColor: COLORS.white
     },
-    likeBtn: {
+    likeBtn: fav => ({
         width: 55,
         height: 55,
         borderWidth: 1,
-        borderColor: '#F37453',
+        borderColor: fav ? COLORS.white : COLORS.tertiary,
         borderRadius: SIZES.medium,
         justifyContent: 'center',
-        alignItems: 'center'
-    },
-    likeBtnImage: {
+        alignItems: 'center',
+        backgroundColor: fav ? COLORS.tertiary : COLORS.white
+    }),
+    likeBtnImage: fav => ({
         width: '40%',
         height: '40%',
-        tintColor: '#F37453'
-    },
+        tintColor: !fav ? COLORS.tertiary : COLORS.white
+    }),
     applyBtn: {
         flex: 1,
         backgroundColor: '#FE7654',
