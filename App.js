@@ -1,8 +1,14 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, View, Text, SafeAreaView, StatusBar } from 'react-native';
+import {
+    StyleSheet,
+    View,
+    SafeAreaView,
+    ActivityIndicator
+} from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
+import { useFonts } from 'expo-font';
 import React from 'react';
 
 import JobSearch from './components/search/Search';
@@ -16,6 +22,22 @@ const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function App() {
+    const [fontLoading] = useFonts({
+        DMBold: require('./assets/fonts/DMSans-Bold.ttf'),
+        DMMedium: require('./assets/fonts/DMSans-Medium.ttf'),
+        DMRegular: require('./assets/fonts/DMSans-Regular.ttf')
+    });
+
+    if (!fontLoading) {
+        return (
+            <ActivityIndicator
+                size="large"
+                color={COLORS.tertiary}
+                style={{ height: 200 }}
+            />
+        );
+    }
+
     function MyDrawer() {
         return (
             <Drawer.Navigator
@@ -66,9 +88,13 @@ export default function App() {
                         )
                     })}
                 />
-                <Drawer.Screen name="Favorite" component={Favorite} options={{
-                    headerTitle: 'Favorite Jobs'
-                }} />
+                <Drawer.Screen
+                    name="Favorite"
+                    component={Favorite}
+                    options={{
+                        headerTitle: 'Favorite Jobs'
+                    }}
+                />
                 <Drawer.Screen name="Profile (static)" component={() => {}} />
                 <Drawer.Screen
                     name="Job Applications (static)"
@@ -89,7 +115,6 @@ export default function App() {
     }
     return (
         <SafeAreaView style={styles.container}>
-            {/* <StatusBar backgroundColor="white" barStyle="dark-content" /> */}
             <View style={styles.container}>
                 <NavigationContainer>
                     <Stack.Navigator>

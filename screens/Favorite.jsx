@@ -1,4 +1,10 @@
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import {
+    View,
+    Text,
+    StyleSheet,
+    FlatList,
+    ActivityIndicator
+} from 'react-native';
 import React, { useState } from 'react';
 import { COLORS } from '../constants';
 import { useFocusEffect } from '@react-navigation/native';
@@ -22,19 +28,23 @@ export default function Favorite() {
     );
 
     return (
-        <FlatList
-            data={favJobList}
-            renderItem={({ item }) => renderFavJobs(item)}
-            contentContainerStyle={styles.container}
-        />
+        <View style={styles.screen}>
+            <FlatList
+                data={favJobList}
+                renderItem={({ item }) => renderFavJobs(item)}
+                contentContainerStyle={styles.container}
+            />
+        </View>
     );
 }
 
 const styles = StyleSheet.create({
+    screen: {
+        flex: 1
+    },
     container: {
-        flex: 1,
         backgroundColor: COLORS.white,
         padding: 10,
-        gap: 7,
-    },
+        gap: 7
+    }
 });

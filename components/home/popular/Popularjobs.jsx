@@ -35,7 +35,7 @@ const Popularjobs = ({ data, activeJobType }) => {
                         handleCardPress={() => handleSelectedJob(item)}
                     />
                 )}
-                contentContainerStyle={{ flexDirection: 'row', gap: 20 }}
+                contentContainerStyle={{ flexDirection: 'row' }}
                 showsHorizontalScrollIndicator={false}
                 horizontal={true}
             />
