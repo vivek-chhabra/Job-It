@@ -1,10 +1,9 @@
-import React from 'react';
 import { View, Text, Image } from 'react-native';
+import React from 'react';
 
-import styles from './popularjobcard.style';
 import { PressableOpacity } from 'react-native-pressable-opacity';
+import styles from './popularjobcard.style';
 import {
-    checkImgUrl,
     truncateText,
     truncateTextWithWords
 } from '../../../../utils/utils';

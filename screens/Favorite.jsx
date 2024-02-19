@@ -1,15 +1,10 @@
-import {
-    View,
-    Text,
-    StyleSheet,
-    FlatList,
-    ActivityIndicator
-} from 'react-native';
-import React, { useState } from 'react';
-import { COLORS } from '../constants';
 import { useFocusEffect } from '@react-navigation/native';
+import { View, StyleSheet, FlatList } from 'react-native';
+import React, { useState } from 'react';
+
 import { getDataFromStorage } from '../utils/utils';
 import { NearbyJobCard } from '../components';
+import { COLORS } from '../constants';
 
 export default function Favorite() {
     const [favJobList, setFavJobList] = useState([]);

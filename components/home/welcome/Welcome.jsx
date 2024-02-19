@@ -1,10 +1,10 @@
 import { View, Text, TextInput, Image, ScrollView } from 'react-native';
-import { useRoute } from '@react-navigation/native';
-import React, { useState } from 'react';
-
-import styles from './welcome.style';
-import { COLORS, icons, SIZES } from '../../../constants';
 import { PressableOpacity } from 'react-native-pressable-opacity';
+import { useRoute } from '@react-navigation/native';
+import React from 'react';
+
+import { COLORS, icons, SIZES } from '../../../constants';
+import styles from './welcome.style';
 
 const Welcome = ({
     setQuery,

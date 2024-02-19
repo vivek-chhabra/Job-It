@@ -1,14 +1,8 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {
-    StyleSheet,
-    View,
-    SafeAreaView,
-    ActivityIndicator
-} from 'react-native';
+import { StyleSheet, View, SafeAreaView, Text } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
-import { useFonts } from 'expo-font';
 import React from 'react';
 
 import JobSearch from './components/search/Search';
@@ -22,21 +16,11 @@ const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
 
 export default function App() {
-    const [fontLoading] = useFonts({
-        DMBold: require('./assets/fonts/DMSans-Bold.ttf'),
-        DMMedium: require('./assets/fonts/DMSans-Medium.ttf'),
-        DMRegular: require('./assets/fonts/DMSans-Regular.ttf')
-    });
-
-    if (!fontLoading) {
-        return (
-            <ActivityIndicator
-                size="large"
-                color={COLORS.tertiary}
-                style={{ height: 200 }}
-            />
-        );
-    }
+    const Static = () => (
+        <View>
+            <Text>Static</Text>
+        </View>
+    );
 
     function MyDrawer() {
         return (
@@ -95,24 +79,25 @@ export default function App() {
                         headerTitle: 'Favorite Jobs'
                     }}
                 />
-                <Drawer.Screen name="Profile (static)" component={() => {}} />
+                <Drawer.Screen name="Profile (static)" component={Static} />
                 <Drawer.Screen
                     name="Job Applications (static)"
-                    component={() => {}}
+                    component={Static}
                 />
                 <Drawer.Screen
                     name="Notifications (static)"
-                    component={() => {}}
+                    component={Static}
                 />
-                <Drawer.Screen name="About (static)" component={() => {}} />
-                <Drawer.Screen name="Settings (static)" component={() => {}} />
+                <Drawer.Screen name="About (static)" component={Static} />
+                <Drawer.Screen name="Settings (static)" component={Static} />
                 <Drawer.Screen
                     name="Help & Support (static)"
-                    component={() => {}}
+                    component={Static}
                 />
             </Drawer.Navigator>
         );
     }
+
     return (
         <SafeAreaView style={styles.container}>
             <View style={styles.container}>

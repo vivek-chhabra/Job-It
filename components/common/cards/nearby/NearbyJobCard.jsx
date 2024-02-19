@@ -1,9 +1,9 @@
+import { PressableOpacity } from 'react-native-pressable-opacity';
+import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image } from 'react-native';
 import React from 'react';
 
-import { PressableOpacity } from 'react-native-pressable-opacity';
 import { truncateTextWithWords } from '../../../../utils/utils';
-import { useNavigation } from '@react-navigation/native';
 import styles from './nearbyjobcard.style';
 
 const NearbyJobCard = ({ job }) => {

@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from 'react';
+import useFetch from '../hooks/useFetch';
 import {
     StyleSheet,
     ScrollView,
@@ -5,10 +7,8 @@ import {
     Text,
     View
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
 
 import { Nearbyjobs, Popularjobs, Welcome } from '../components';
-import useFetch from '../hooks/useFetch';
 import { COLORS, SIZES } from '../constants';
 
 const jobTitles = ['All', 'Full-time', 'Part-Time', 'Contractor'];

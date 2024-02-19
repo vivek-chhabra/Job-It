@@ -1,8 +1,8 @@
+import { PressableOpacity } from 'react-native-pressable-opacity'
 import { View, Text, ScrollView } from 'react-native'
 import React from 'react'
 
 import NearbyJobCard from '../../common/cards/nearby/NearbyJobCard'
-import { PressableOpacity } from 'react-native-pressable-opacity'
 import styles from './nearbyjobs.style'
 
 const Nearbyjobs = ({ data, activeJobType }) => {

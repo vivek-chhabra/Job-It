@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useFocusEffect, useRoute } from '@react-navigation/native';
-import React, { useState } from 'react';
 import { Text, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
 import {
     ActivityIndicator,
     FlatList,
@@ -12,8 +12,8 @@ import {
 
 import { ScreenHeaderBtn, NearbyJobCard } from '../../components';
 import { COLORS, icons, SIZES } from '../../constants';
-import styles from '../../styles/search';
 import useFetch from '../../hooks/useFetch';
+import styles from '../../styles/search';
 
 const Stack = createNativeStackNavigator();
 

@@ -3,6 +3,9 @@ import { useFocusEffect, useRoute } from '@react-navigation/native';
 import { ScrollView, StyleSheet } from 'react-native';
 import React from 'react';
 
+import { getDataFromStorage, isFav } from '../utils/utils';
+import { COLORS, SIZES } from '../constants';
+import { useState } from 'react';
 import {
     Company,
     JobAbout,
@@ -10,9 +13,6 @@ import {
     JobTabs,
     Specifics
 } from '../components';
-import { COLORS, SIZES } from '../constants';
-import { useState } from 'react';
-import { getDataFromStorage, isFav } from '../utils/utils';
 
 const tabs = ['About', 'Qualifications', 'Responsibilities'];
 

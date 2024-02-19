@@ -23,18 +23,18 @@ export default useFetch = endPoint => {
         setError(null);
         setData([]);
 
-        try {
-            const res = await axios.request(options);
+        // try {
+        //     const res = await axios.request(options);
 
-            setData(res.data.data);
-            setIsLoading(false);
-            return res.data.data;
-        } catch (err) {
-            console.log(err.message);
-            setError(err.message);
-            alert(err.message);
-            setIsLoading(false);
-        }
+        //     setData(res.data.data);
+        //     setIsLoading(false);
+        //     return res.data.data;
+        // } catch (err) {
+        //     console.log(err.message);
+        //     setError(err.message);
+        //     alert(err.message);
+        //     setIsLoading(false);
+        // }
     };
 
     return { isLoading, error, data, fetchData };

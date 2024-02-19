@@ -27,14 +27,12 @@ const styles = StyleSheet.create({
     },
     companyName: {
         fontSize: SIZES.medium - 1,
-        fontFamily: FONT.regular,
         color: COLORS.white,
         width: 140,
         flexWrap: 'wrap'
     },
     jobName: (selectedJob, item) => ({
         fontSize: SIZES.large,
-        fontFamily: FONT.medium,
         color: selectedJob === item.job_id ? COLORS.white : COLORS.primary,
         textTransform: 'capitalize',
         fontSize: 15
@@ -47,12 +45,11 @@ const styles = StyleSheet.create({
     },
     publisher: selectedJob => ({
         fontSize: SIZES.medium - 2,
-        fontFamily: FONT.bold,
+        fontWeight: 'bold',
         color: selectedJob === item.job_id ? COLORS.white : COLORS.primary
     }),
     location: {
         fontSize: SIZES.small,
-        fontFamily: FONT.regular,
         color: '#B3AEC6'
     },
     topRowContainer: {

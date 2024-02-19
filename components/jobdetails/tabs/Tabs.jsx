@@ -7,7 +7,6 @@ import { COLORS, SIZES } from '../../../constants';
 
 const Tabs = ({ tabs, activeTab, setActiveTab }) => {
     function TabButton({ name }) {
-        console.log('press works', name);
         return (
             <PressableOpacity
                 style={styles.btn(name, activeTab)}
@@ -37,8 +36,8 @@ const Tabs = ({ tabs, activeTab, setActiveTab }) => {
                 width: '100%'
             }}
         >
-            {tabs.map(tab => (
-                <TabButton name={tab} />
+            {tabs.map((tab, idx) => (
+                <TabButton name={tab} key={`tab-${idx}`} />
             ))}
         </ScrollView>
     );
