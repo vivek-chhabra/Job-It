@@ -4,6 +4,14 @@
 
 <br>
 
+<div>
+  <img style="margin-right: 20" src="https://github.com/vivek-chhabra/Job-It/assets/105328667/11d68a3c-cffb-48ac-95d6-d9518629ccdd" alt="Image 1" width="300" style="margin-right: 20px;" />
+  <img src="https://github.com/vivek-chhabra/Job-It/assets/105328667/e3df25d4-8c5d-4467-8431-27926a3e9f7a" alt="Image 2" width="300" />
+  <img src="https://github.com/vivek-chhabra/Job-It/assets/105328667/7f424f1e-7b63-4c75-a001-5f00a710285f" alt="Image 2" width="300" />
+</div>
+
+<br>
+
 ## Features
 
 - **Job Search:** Users can search for jobs based on their preferences, such as location, industry, or job title.
