@@ -29,10 +29,4 @@
 - **Rapid API:** Utilized for fetching job data to populate the application with up-to-date job listings.
 - **React Async Storage:** Used for storing data locally on the device, such as favorite job listings.
 
-<br>
-
-## Contributing
-
-Contributions are welcome! If you have any ideas for improvements or new features, feel free to open an issue or submit a pull request.
-
 
